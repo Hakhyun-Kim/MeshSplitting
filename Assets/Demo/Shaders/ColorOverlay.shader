@@ -1,3 +1,5 @@
+// Upgrade NOTE: replaced 'mul(UNITY_MATRIX_MVP,*)' with 'UnityObjectToClipPos(*)'
+
 Shader "Basic/ColorOverlay" {
 	Properties {
 		_Color ("Color", Color) = (1, 1, 1, 1)
@@ -23,7 +25,7 @@ Shader "Basic/ColorOverlay" {
 			v2f vert (appdata_base v)
 			{
 				v2f o;
-				o.pos = mul (UNITY_MATRIX_MVP, v.vertex);
+				o.pos = UnityObjectToClipPos (v.vertex);
 				return o;
 			}
 
